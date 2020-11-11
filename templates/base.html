@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/menu.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="fixed">
+                <h1>Continents</h1>
+                <ul>
+                    {% for c in continents %}    
+                        <li><a href="/continent/{{c}}">{{c}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="flex-item">
+                <div id="content">{% block content %}{% endblock %}</div>
+            </div>
+        </div>
+    </body>
+</html>
