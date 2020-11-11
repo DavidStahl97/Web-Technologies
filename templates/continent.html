@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>{{continent_name}}</h1>
+        <ul>
+            {% for country in country_list %}    
+                <li><a href="/countryByName/{{country}}">{{country}}</a></li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>

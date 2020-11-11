@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Continents</h1>
+        <ul>
+            {% for c in continents %}    
+                <li><a href="/continent/{{c}}">{{c}}</a></li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>
