@@ -6,4 +6,15 @@
 <p>Continent <a href="{{country['continent']}}">{{country['continent']}}</a></p>
 
 <img src="{{ country['flag'] }}"/>
+
+<br/>
+<br/>
+<br/>
+
+<div>
+    <span>
+        <a href="/countryByName/{{leftCountry['name']}}">&larr; {{leftCountry['name']}}</a>
+        <a href="/countryByName/{{rightCountry['name']}}">{{rightCountry['name']}} &rarr; </a>
+    </span>
+</div>
 {% endblock %}

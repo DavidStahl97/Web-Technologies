@@ -6,13 +6,27 @@ continents = sorted(set([c['continent'] for c in data]))
 
 app = Flask(__name__)
 
+def getCountryIndex(country):
+    return data.index(country)
+
+def getNeighbors(countryIndex):
+    length = len(data)
+    left = (countryIndex - 1) % length
+    right = (countryIndex + 1) % length
+    return data[left], data[right]
+
+def generateCountryPage(country):
+    index = getCountryIndex(country)
+    left, right = getNeighbors(index)
+    return render_template("country.html", country = country, continents = continents, leftCountry = left, rightCountry = right)    
+
 @app.route("/")
 def indexPage():
     return render_template('index.html', continents = continents)
 
 @app.route("/country/<num>")
-def countryPage(num):
-    return render_template('country.html', country = data[int(num)], continents = continents)
+def countryPage(num):    
+    return generateCountryPage(data[int(num)])
 
 @app.route("/continent/<continent_name>")    
 def continentPage(continent_name):
@@ -22,6 +36,6 @@ def continentPage(continent_name):
 @app.route("/countryByName/<name>")    
 def countryByNamePage(name):
     country = next(c for c in data if c['name'] == name)
-    return render_template("country.html", country = country, continents = continents)
+    return generateCountryPage(country)
 
 app.run(debug=True)    
